@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@4.3.1/main.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@4.3.0/main.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/timegrid@4.3.0/main.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/@fullcalendar/core/main.min.css">
+    <link rel="stylesheet" href="node_modules/@fullcalendar/daygrid/main.min.css">
+    <link rel="stylesheet" href="node_modules/@fullcalendar/timegrid/main.min.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <aside class="tanda-aside">
@@ -202,19 +203,20 @@
           <div id="calendar"></div>
         </main>
         <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary">Continue</button>
+          <button class="modal__btn modal__btn-primary" id="estoEsUnaPrueba">Continue</button>
           <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
         </footer>
       </div>
     </div>
   </div>
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/core@4.3.1/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/daygrid@4.3.0/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/interaction@4.3.0/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/timegrid@4.3.0/main.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="main.js"></script>
+    <script src="node_modules/micromodal/dist/micromodal.min.js"></script>
+    <script src="node_modules/@fullcalendar/core/main.min.js"></script>
+    <script src="node_modules/@fullcalendar/daygrid/main.min.js"></script>
+    <script src="node_modules/@fullcalendar/interaction/main.min.js"></script>
+    <script src="node_modules/@fullcalendar/timegrid/main.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/chosen-js/chosen.jquery.js"></script>
+    <script src="node_modules/js-cookie/src/js.cookie.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
