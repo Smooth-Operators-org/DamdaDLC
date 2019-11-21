@@ -1,0 +1,32 @@
+{
+  "name": "tanda",
+  "version": "1.0.0",
+  "main": "_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Smooth-Operators-org/DamdaDLC.git"
+  },
+  "author": "Damda Tanda Pals",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Smooth-Operators-org/DamdaDLC/issues"
+  },
+  "homepage": "https://github.com/Smooth-Operators-org/DamdaDLC",
+  "description": "",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
+    "chosen-js": "^1.8.7",
+    "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
+    "micromodal": "^0.4.2"
+  }
+}
