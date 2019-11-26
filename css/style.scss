@@ -123,6 +123,9 @@ $ancho-aside: 60px;
                     width: 100%;
                     fill: $secondary;
                 }
+                img{
+                    width: 100%;
+                }
             }
             a.is-active{
                 &::before{

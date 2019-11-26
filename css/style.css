@@ -136,6 +136,9 @@ a {
   width: 100%;
   fill: #88c14f;
 }
+.option__list ul li a img {
+  width: 100%;
+}
 .option__list ul li a.is-active::before {
   background-color: #11aa44;
 }
