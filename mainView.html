@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-responsive-dt/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="node_modules/jquery-ui/themes/base/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ajustes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" data-micromodal-trigger="modal-ajustesTandaTanda">Ajustes de Tanda</a>
+          </div>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
+  <main class="container-fluid mt-4">
+        <div class="col-md-12">
+            <div class="text-right">
+                <div class="d-inline-block">
+                    <button type="button" class="btn btn-success d-block" data-micromodal-trigger="modal-insertarMiembro">
+                        <i class="fas fa-plus mr-2"></i>Añadir
+                    </button>
+                </div>
+                <div class="d-inline-block">
+                    <button type="button" class="btn btn-outline-success d-block" data-micromodal-trigger="modal-insertarNuevoUsuario">
+                            <i class="far fa-user"></i>
+                    </button>
+                </div>
+                <div class="d-inline-block">
+                    <button type="button" class="btn btn-outline-secondary d-block" data-micromodal-trigger="modal-openSettings">
+                        <i class="fas fa-cog" class="text-secondary"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+      <div class="col-md-12 mt-2 overflow-hidden">
+          <table id="mainTable">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <th>Pago</th>
+                    <th>Usuario</th>
+                    <th>Fecha de pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <input type="checkbox" name="" id="" checked>
+                    </td>
+                    <td>dan@hola.com</td>
+                    <td>2019-11-29</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <input type="checkbox" name="" id="">
+                    </td>
+                    <td>hola@hola.com</td>
+                    <td>2019-12-04</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        <input type="checkbox" name="" id="">
+                    </td>
+                    <td>jalisco@hola.com</td>
+                    <td>2019-12-12</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+  </main>
+<div class="modal micromodal-slide" id="modal-insertarMiembro" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-insertarMiembro-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-insertarMiembro-title">Insertar</h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-insertarMiembro-content">
+                <!-- usuario, fecha de pago, num de pago -->
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label for="">Usuario</label>
+                            <select name="" id="" class="form-control">
+                                <option value="">Daniel Russocki</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <label for="">Fecha</label>
+                            <input type="text" name="" class="form-control" id="fechafecha">
+                        </div>
+                        <div class="form-group col-sm-3 ml-auto">
+                            <label for="">Num. de pago</label>
+                            <select name="" id="" class="form-control">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer class="modal__footer">
+                <button class="modal__btn modal__btn-primary" type="button">Insertar</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            </footer>
+        </div>
+    </div>
+</div>
+<div class="modal micromodal-slide" id="modal-openSettings" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-openSettings-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-openSettings-title">Ajustes</h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-openSettings-content">
+                <!-- usuario, fecha de pago, num de pago -->
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-sm-4">
+                            <label for="">Num de participantes</label>
+                            <input type="number" name="" class="form-control" min="1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Fecha inicio</label>
+                            <input type="text" name="" class="form-control" id="ajustesfechainicio">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Fecha fin</label>
+                            <input type="text" name="" class="form-control" id="ajustesfechafin">
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer class="modal__footer">
+                <button class="modal__btn modal__btn-primary" type="button">Insertar</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            </footer>
+        </div>
+    </div>
+</div>
+<div class="modal micromodal-slide" id="modal-insertarNuevoUsuario" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-insertarNuevoUsuario-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-insertarNuevoUsuario-title">Nuevo usuario</h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-insertarNuevoUsuario-content">
+                <!-- usuario, fecha de pago, num de pago -->
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Nombre</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Correo</label>
+                            <input type="email" name="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Teléfono</label>
+                            <input type="text" name="" class="form-control" id="ajustesfechainicio">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Tanda</label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Tanda 1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Orden</label>
+                            <select name="" class="form-control" id="">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer class="modal__footer">
+                <button class="modal__btn modal__btn-primary" type="button">Insertar</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            </footer>
+        </div>
+    </div>
+</div>
+<div class="modal micromodal-slide" id="modal-ajustesTandaTanda" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-ajustesTandaTanda-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-ajustesTandaTanda-title">Nuevo usuario</h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-ajustesTandaTanda-content">
+                <!-- usuario, fecha de pago, num de pago -->
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Periodicidad</label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Semanal</option>
+                                <option value="">Quincenal</option>
+                                <option value="">Mensual</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Importe</label>
+                            <input type="number" name="" class="form-control" min="1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Administrador</label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Daniel Russocki</option>
+                                <option value="">Alejandro Magno</option>
+                                <option value="">Walter White</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer class="modal__footer">
+                <button class="modal__btn modal__btn-primary" type="button">Insertar</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            </footer>
+        </div>
+    </div>
+</div>
+<script src="node_modules/micromodal/dist/micromodal.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="node_modules/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+<script src="node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+<script src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script>
+<script>
+    $(document).ready(function(){
+        MicroModal.init();
+        $('#mainTable').DataTable({
+            responsive: true
+        });
+        $(function(){
+            $('#fechafecha').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#ajustesfechainicio').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#ajustesfechafin').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,6 +1,8 @@
+sessionCheck();
 MicroModal.init();
 
 $(document).ready(function(){
+
     $('#openFixedMenu').click(function(){
         $('#fixedMenu').show();
     });
@@ -9,6 +11,11 @@ $(document).ready(function(){
     });
     $('#open-modal-1').click(function(){
         MicroModal.show('modal-1');
+    });
+    $('.cerrarSession').click(function(e){
+        e.preventDefault();
+        Cookies.remove('sessionExists');
+        sessionCheck();
     });
     // PRUEBA DE CONEXIÓN A LA API
     $('#estoEsUnaPrueba').click(function(){
@@ -55,3 +62,11 @@ document.addEventListener('DOMContentLoaded', function(){
     });
     calendar.render();
 });
+
+function sessionCheck(){
+    if(typeof Cookies.get('sessionExists') === 'undefined'){
+        window.location.href = 'login.html';
+    } else {
+        $('body').show();
+    }
+}

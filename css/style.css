@@ -423,6 +423,21 @@ a {
   text-shadow: 2px 2px rgba(0, 0, 0, 0.16);
 }
 
+.modal-link__settings {
+  list-style: none;
+  text-align: center;
+}
+.modal-link__settings li a {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.modal-link__settings li:last-child a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.modal-link__settings a {
+  display: block;
+  padding: 12px 0;
+}
+
 /**************************\
   Basic Modal Styles
 \**************************/
@@ -501,7 +516,7 @@ a {
 }
 @media screen and (max-width: 576px) {
   .modal__content input[type=number] {
-    width: 100%;
+    width: 60%;
   }
 }
 
@@ -609,6 +624,126 @@ a {
 .micromodal-slide .modal__container,
 .micromodal-slide .modal__overlay {
   will-change: transform;
+}
+
+.inline {
+  display: inline;
+}
+.inline:not(:first-child) {
+  margin-left: 8px;
+}
+
+.numberContainer {
+  position: relative;
+}
+.numberContainer input {
+  width: 60px;
+  height: 42px;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  float: left;
+  padding-right: 24px;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+.numberContainer input:focus {
+  outline: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.numberContainer-nav {
+  position: relative;
+  height: 42px;
+  float: left;
+}
+
+.numberContainer-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  width: 20px;
+  text-align: center;
+  color: #222;
+  font-size: 13px;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.numberContainer-button.numberContainer-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.numberContainer-button.numberContainer-down {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+}
+
+.numberNumber {
+  display: block;
+  width: 100%;
+  height: 42px;
+  margin-top: 12px;
+}
+
+.iconoForCoupon {
+  float: left;
+  height: 42px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconoForCoupon i {
+  color: rgba(17, 170, 68, 0.8);
+}
+
+.iconoForCoupon.end {
+  margin-left: 8px;
+}
+
+.iconoForCoupon.start {
+  margin-right: 8px;
+}
+
+.selectContainer {
+  min-width: 200px;
+  width: auto;
+}
+
+#modal-insertcoupon-content > div:not(:first-child) {
+  margin-top: 12px;
+}
+
+#codeResponse button {
+  padding: 8px;
+  background-color: transparent;
+  color: #11aa44;
+  border: 1px solid #11aa44;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.copy-done {
+  color: #11aa44;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
