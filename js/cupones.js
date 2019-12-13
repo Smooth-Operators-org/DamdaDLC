@@ -67,7 +67,7 @@ $(document).ready(function(){
         console.log(tipoCoupon, valorCoupon, selectForApp, selectForPlan, startDate, endDate);
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:5000/api/coupon/register',
+            url: 'http://tandas.smoothoperators.com.mx/api/coupon/register',
             contentType: 'application/json; charset=utf-8',
             data: obj2,
             dataType: 'json',
