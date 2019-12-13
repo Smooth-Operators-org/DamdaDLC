@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="node_modules/jquery-ui/themes/base/all.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="display: none;">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,6 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Ajustes
@@ -33,6 +30,9 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#" data-micromodal-trigger="modal-ajustesTandaTanda">Ajustes de Tanda</a>
           </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cerrarSession" href="#">Cerrar sesión</a>
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
@@ -42,10 +42,18 @@
     </div>
   </nav>
   <main class="container-fluid mt-4">
+      <!-- Code for the cards -->
+        <div class="row" id="cardsGoHere"></div>
+        <!-- End code for the cards -->
+        <div class="row mt-4" id="detailsForTheTanda">
+            <div class="col">
+                <h2>Monto: $<span id="montoGrupal"></span> - <span id="tandaTitle"></span></h2>
+            </div>
+        </div>
         <div class="col-md-12">
             <div class="text-right">
                 <div class="d-inline-block">
-                    <button type="button" class="btn btn-success d-block" data-micromodal-trigger="modal-insertarMiembro">
+                    <button type="button" class="btn btn-success d-block" data-micromodal-trigger="modal-insertarMiembro" id="addUserToGroup">
                         <i class="fas fa-plus mr-2"></i>Añadir
                     </button>
                 </div>
@@ -69,33 +77,30 @@
                     <th>Pago</th>
                     <th>Usuario</th>
                     <th>Fecha de pago</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id="contentOfTheTable">
+                <!-- <tr>
                     <td>1</td>
                     <td>
                         <input type="checkbox" name="" id="" checked>
                     </td>
-                    <td>dan@hola.com</td>
+                    <td>
+                        <button class="d-block text-left w-100 h-100 bg-transparent border-0" data-micromodal-trigger="modal-ajustesTandaTanda">
+                            dan@hola.com
+                        </button>
+                    </td>
                     <td>2019-11-29</td>
-                </tr>
-                <tr>
-                    <td>2</td>
                     <td>
-                        <input type="checkbox" name="" id="">
+                        <button class="bg-transparent border-0" data-user-id="" type="button" type="button">
+                            <i class="far fa-edit"></i>
+                        </button>
+                        <button class="bg-transparent border-0" data-user-id="" type="button">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </td>
-                    <td>hola@hola.com</td>
-                    <td>2019-12-04</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <input type="checkbox" name="" id="">
-                    </td>
-                    <td>jalisco@hola.com</td>
-                    <td>2019-12-12</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
       </div>
@@ -113,17 +118,17 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="">Usuario</label>
-                            <select name="" id="" class="form-control">
-                                <option value="">Daniel Russocki</option>
+                            <select name="usuarioTanda" id="usuarioTandaSelect" class="form-control">
+                                <!-- <option value="">Daniel Russocki</option> -->
                             </select>
                         </div>
                         <div class="form-group col-sm-8">
                             <label for="">Fecha</label>
-                            <input type="text" name="" class="form-control" id="fechafecha">
+                            <input type="text" name="fechaTanda" class="form-control" id="fechafecha">
                         </div>
                         <div class="form-group col-sm-3 ml-auto">
                             <label for="">Num. de pago</label>
-                            <select name="" id="" class="form-control">
+                            <select name="ordenPagoTanda" id="" class="form-control">
                                 <option value="">1</option>
                                 <option value="">2</option>
                                 <option value="">3</option>
@@ -134,7 +139,7 @@
                 </form>
             </main>
             <footer class="modal__footer">
-                <button class="modal__btn modal__btn-primary" type="button">Insertar</button>
+                <button class="modal__btn modal__btn-primary" type="button" id="insertUserGroup">Insertar</button>
                 <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
             </footer>
         </div>
@@ -190,25 +195,25 @@
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label for="">Nombre</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" name="nombreForTanda" class="form-control" id="nombreForTanda">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label for="">Correo</label>
-                            <input type="email" name="" class="form-control">
+                            <input type="email" name="correoForTanda" class="form-control" id="correoForTanda">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label for="">Teléfono</label>
-                            <input type="text" name="" class="form-control" id="ajustesfechainicio">
+                            <input type="text" name="telForTanda" class="form-control" id="ajustesfechainicio">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label for="">Tanda</label>
-                            <select name="" class="form-control" id="">
+                            <select name="tandaForTanda" class="form-control" id="tandaForTanda">
                                 <option value="">Tanda 1</option>
                             </select>
                         </div>
@@ -216,7 +221,7 @@
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label for="">Orden</label>
-                            <select name="" class="form-control" id="">
+                            <select name="ordenForTanda" class="form-control" id="ordenForTanda">
                                 <option value="">1</option>
                                 <option value="">2</option>
                             </select>
@@ -276,8 +281,55 @@
         </div>
     </div>
 </div>
+<div class="modal micromodal-slide" id="modal-infoPersona" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-infoPersona-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-infoPersona-title">Pepito</h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-infoPersona-content">
+                <!-- usuario, fecha de pago, num de pago -->
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Periodicidad</label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Semanal</option>
+                                <option value="">Quincenal</option>
+                                <option value="">Mensual</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Importe</label>
+                            <input type="number" name="" class="form-control" min="1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="">Administrador</label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Daniel Russocki</option>
+                                <option value="">Alejandro Magno</option>
+                                <option value="">Walter White</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer class="modal__footer">
+                <button class="modal__btn modal__btn-primary" type="button">Insertar</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            </footer>
+        </div>
+    </div>
+</div>
 <script src="node_modules/micromodal/dist/micromodal.min.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/js-cookie/src/js.cookie.js"></script>
+<script src="node_modules/chosen-js/chosen.jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
@@ -285,23 +337,225 @@
 <script src="node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
 <script src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script>
 <script>
+    sessionCheck();
+    MicroModal.init();
     $(document).ready(function(){
-        MicroModal.init();
+        initList();
+        initSelectTanda();
+        $('.cerrarSession').click(function(e){
+            e.preventDefault();
+            Cookies.remove('sessionExists');
+            Cookies.remove('userSerial');
+            Cookies.remove('userRole');
+            sessionCheck();
+        });
         $('#mainTable').DataTable({
-            responsive: true
+            responsive: true,
+            ordering: false,
+            info: false,
+            searching: false,
+            bPaginate: false,
+            language: {
+                emptyTable: "Dé click en una tanta para ver su información"
+            }
         });
         $(function(){
-            $('#fechafecha').datepicker({
+            let hoy = new Date();
+            $('#fechafecha, #ajustesfechainicio, #ajustesfechafin').datepicker({
                 dateFormat: 'yy-mm-dd'
             });
-            $('#ajustesfechainicio').datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
-            $('#ajustesfechafin').datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
+            $('#fechafecha, #ajustesfechainicio, #ajustesfechafin').datepicker("option", "minDate", new Date(hoy.getFullYear(), String(hoy.getMonth()).padStart(2, '0'), String(hoy.getDate()).padStart(2, '0')));
         });
     });
+    function initList(){
+        let usSer = Cookies.get('userSerial');
+        $.ajax({
+            type: 'GET',
+            url: 'http://tandas.smoothoperators.com.mx/damdaservice/api/users/getgroups/' + usSer,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            crossDomain: true,
+            success: function(r){
+                console.log(r);
+                genCardStructure(r);
+            },
+            error: function(r){
+                console.log(r);
+            }
+        });
+    }
+    function sessionCheck(){
+        if(typeof Cookies.get('sessionExists') === 'undefined'){
+            window.location.href = 'login.html';
+        } else {
+            $('body').show();
+            // console.log(Cookies.get('userSerial'));
+        }
+    }
+    function genCardStructure(r){
+        $('#montoGrupal').text(r.list[0].amount);
+        let cantidad = r.list.length;
+        console.log(cantidad);
+        let cardStruc = ``;
+        for(let l in r.list){
+            cantidad++;
+            console.log(l, r.list[l]);
+            if(r.list[l].status == 1 || r.list[l].status == '1'){
+                cardStruc += `
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">${r.list[l].name}</h3>
+                                <h4 class="card-subtitle mb-2 text-muted">$${r.list[l].amount}</h4>
+                                <p class="card-text">${r.list[l].begin}</p>
+                                <a href="#" data-cardinfoserial="${r.list[l].group}" class="card-link open-the__link">Abrir</a>
+                                <a href="#" class="card-link">Otro link</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        $('#cardsGoHere').html(cardStruc);
+        $('.open-the__link').on('click',function(){
+            let infoSerial = $(this).data('cardinfoserial');
+            $('#addUserToGroup').attr('data-gruposeleccionado', infoSerial);
+            // console.log(infoSerial);
+            obtenerLista(infoSerial);
+        });
+        $('#tandaTitle').text(r.list[0].name);
+    }
+    function obtenerLista(serialParaLista){
+        $.ajax({
+            type: 'GET',
+            url: 'http://tandas.smoothoperators.com.mx/damdaservice/api/groups/getlist/' + serialParaLista,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            crossDomain: true,
+            success: function(r){
+                console.log(r);
+                loadTabla(r);
+                // $('#mainTable').on('draw.dt', function(){
+                //     loadTabla(r);
+                // });
+            },
+            error: function(r){
+                console.log(r);
+            }
+        });
+    }
+    function loadTabla(r){
+        let contenidoTabla = ``;
+        let permiso = Cookies.get('userRole');
+        if(permiso == 2){
+            for(let l in r.list){
+                contenidoTabla += `
+                    <tr>
+                        <td>${r.list[l].position}</td>
+                        <td>
+                            <input type="checkbox" name="" id="" checked>
+                        </td>
+                        <td>
+                            <button class="d-block text-left w-100 h-100 bg-transparent border-0" data-micromodal-trigger="modal-ajustesTandaTanda">
+                                ${r.list[l].lastName}, ${r.list[l].name}
+                            </button>
+                        </td>
+                        <td>2019-11-29</td>
+                        <td></td>
+                    </tr>
+                `;
+            }
+        } else {
+            for(let l in r.list){
+                contenidoTabla += `
+                    <tr>
+                        <td>${r.list[l].position}</td>
+                        <td>
+                            <input type="checkbox" name="" id="" checked>
+                        </td>
+                        <td>
+                            <button class="d-block text-left w-100 h-100 bg-transparent border-0" data-micromodal-trigger="modal-ajustesTandaTanda">
+                                ${r.list[l].lastName}, ${r.list[l].name}
+                            </button>
+                        </td>
+                        <td>2019-11-29</td>
+                        <td>
+                            <button class="bg-transparent border-0 deleteUserInTanda" data-userserialaction="${r.list[l].serial}" type="button">
+                                <i class="fas fa-trash"></i> Borrar
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }
+            $('#contentOfTheTable').on('click', '.deleteUserInTanda', function(){
+                let usuarioSerial = $(this).data('userserialaction');
+                let serialGrupo = $('#addUserToGroup').data('gruposeleccionado');
+                console.log(usuarioSerial, serialGrupo);
+                $.ajax({
+                    type: 'DELETE',
+                    method: 'DELETE',
+                    url: 'http://tandas.smoothoperators.com.mx/damdaservice/api/groups/' + serialGrupo + '/user/' + usuarioSerial,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    crossDomain: true,
+                    success: function(r){
+                        console.log(r);
+                        location.reload();
+                    },
+                    error: function(r){
+                        console.log(r);
+                    }
+                });
+            });
+        }
+        $('#contentOfTheTable').html(contenidoTabla);
+    }
+    function insertUserGroup(){
+        $('#insertUserGroup').click(function(){
+            let serialon = $('#addUserToGroup').data('data-gruposeleccionado');
+            let obj = {
+                Group: serialon,
+                User: {}
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'http://tandas.smoothoperators.com.mx/damdaservice/api/groups/adduser',
+                contentType: 'application/json; charset=utf-8',
+                data: obj,
+                dataType: 'json',
+                crossDomain: true,
+                success: function(r){
+                    console.log(r);
+                    genCardStructure(r);
+                },
+                error: function(r){
+                    console.log(r);
+                }
+            });
+        });
+    }
+    function initSelectTanda(){
+        $.ajax({
+            type: 'GET',
+            url: 'http://tandas.smoothoperators.com.mx/damdaservice/api/users/',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            crossDomain: true,
+            success: function(r){
+                console.log(r);
+                let contenidoSelect = ``;
+                for(let n in r){
+                    contenidoSelect += `
+                        <option value="${r[n].serial}">${r[n].name} ${r[n].lastname}</option>
+                    `;
+                }
+                $('#usuarioTandaSelect').html(contenidoSelect);
+            },
+            error: function(r){
+                console.log(r);
+            }
+        });
+    }
 </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 sessionCheck();
 MicroModal.init();
 $(document).ready(function(){
+    loadAllCoupons();
     $('#openFixedMenu').click(function(){
         $('#fixedMenu').show();
     });
@@ -13,6 +14,8 @@ $(document).ready(function(){
     $('.cerrarSession').click(function(e){
         e.preventDefault();
         Cookies.remove('sessionExists');
+        Cookies.remove('userSerial');
+        Cookies.remove('userRole');
         sessionCheck();
     });
     $('input[type=radio][name=tipoCoupon]').change(function(){
@@ -28,12 +31,11 @@ $(document).ready(function(){
     loadPercentInput();
     $('.chosen-select').chosen({width:'100%'});
     $(function(){
-        $('#startDate').datepicker({
+        let hoy = new Date();
+        $('#startDate, #endDate').datepicker({
             dateFormat: 'yy-mm-dd'
         });
-        $('#endDate').datepicker({
-            dateFormat: 'yy-mm-dd'
-        });
+        $('#startDate, #endDate').datepicker("option", "minDate", new Date(hoy.getFullYear(), String(hoy.getMonth()).padStart(2, '0'), String(hoy.getDate()).padStart(2, '0')));
     });
     $('#btnInsertCoupon').click(function(){
         let tipoCoupon = $('input[type=radio][name=tipoCoupon]:checked').val();
@@ -42,10 +44,20 @@ $(document).ready(function(){
         let selectForPlan = $('select[name=selectForPlan]').val();
         let startDate = $('input[name=startDate]').val();
         let endDate = $('input[name=endDate]').val();
+        let tipotipo = $('input[name=valorCoupon').data('typenumber');
+        let e = 0;
+        let d = 0.0;
+        if(tipotipo == 'entero'){
+            d = valorCoupon;
+            e = 0.0;
+        }else{
+            e = valorCoupon;
+            d = 0.0;
+        }
         let obj = {
             Type: tipoCoupon,
-            Porcent: valorCoupon,
-            Amount: 1200,
+            Porcent: e,
+            Amount: d,
             Platform: selectForApp,
             Plan: selectForPlan,
             Start: startDate,
@@ -100,12 +112,12 @@ function changeToFixed(){
         <div class="iconoForCoupon start">
             <i class="fas fa-dollar-sign"></i>
         </div>
-        <input type="number" name="valorCoupon" min=".01" step=".01" value="10">
+        <input type="number" name="valorCoupon" min=".01" step=".01" value="10" data-typenumber="decimal">
     `);
 }
 function changeToPercent(){
     $('.numberContainer').html(`
-        <input type="number" name="valorCoupon" min="1" max="99" step="1" value="10">
+        <input type="number" name="valorCoupon" min="1" max="99" step="1" value="10" data-typenumber="entero">
         <div class="iconoForCoupon end">
             <i class="fas fa-percent"></i>
         </div>
@@ -155,4 +167,21 @@ function copyTheCode(){
     document.execCommand("copy");
     textBox.css({'border':'1px solid #11aa44', color: '#11aa44'});
     $('#copyDone').html('<small>Copied!</small>');
+}
+function loadAllCoupons(){
+    let serv = 'http://tandas.smoothoperators.com.mx/damdaservice';
+    let local = 'localhost:5000';
+    // $.ajax({
+    //     type: 'GET',
+    //     url: local + '/api/coupons/',
+    //     contentType: 'application/json; charset=utf-8',
+    //     dataType: 'json',
+    //     crossDomain: true,
+    //     success: function(r){
+    //         console.log(r);
+    //     },
+    //     error: function(r){
+    //         console.log(r);
+    //     }
+    // });
 }

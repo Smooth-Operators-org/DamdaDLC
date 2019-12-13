@@ -23,7 +23,8 @@ $(document).ready(function(){
                     // console.log(msg);
                     // checar(msg);
                     Cookies.set('sessionExists', true, {expires:null});
-                    // Cookies.set('userSerial', true, {expires:null});
+                    Cookies.set('userSerial', msg.serial, {expires:null});
+                    Cookies.set('userRole', msg.level, {expires: null});
                     sessionCheck();
                 },
                 error: function(r){
