@@ -2,6 +2,16 @@ sessionCheck();
 MicroModal.init();
 $(document).ready(function(){
     loadAllCoupons();
+    $('#holaaa').DataTable({
+        responsive: true,
+        ordering: false,
+        info: false,
+        searching: false,
+        bPaginate: false,
+        language: {
+            emptyTable: "Dé click en una tanta para ver su información"
+        }
+    });
     $('#openFixedMenu').click(function(){
         $('#fixedMenu').show();
     });
@@ -170,18 +180,56 @@ function copyTheCode(){
 }
 function loadAllCoupons(){
     let serv = 'http://tandas.smoothoperators.com.mx/damdaservice';
-    let local = 'localhost:5000';
-    // $.ajax({
-    //     type: 'GET',
-    //     url: local + '/api/coupons/',
-    //     contentType: 'application/json; charset=utf-8',
-    //     dataType: 'json',
-    //     crossDomain: true,
-    //     success: function(r){
-    //         console.log(r);
-    //     },
-    //     error: function(r){
-    //         console.log(r);
-    //     }
-    // });
+    // let local = 'localhost:5000';
+    let contenido = '';
+    $.ajax({
+        type: 'GET',
+        url: serv + '/api/coupons/',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        crossDomain: true,
+        success: function(r){
+            for(let n in r){
+                let aa = String(r[n].plan);
+                let bb = aa.replace("1", "Trial").replace("2","Básico").replace("3", "Premium");
+                let cc = String(r[n].platform);
+                let dd = cc.replace("G", "Gastos").replace("T","Tandas").replace("C","Cañones");
+                contenido += `
+                <tr>
+                    <td>${r[n].couponCode}</td>
+                    <td>${r[n].start_Date}</td>
+                    <td>${r[n].end_Date}</td>
+                    <td>${r[n].type == 1 ? 'Porcentaje': 'Fijo'} - ${r[n].porcent}</td>
+                    <td>${bb}</td>
+                    <td>${dd}</td>
+                    <td>${r[n].status == true ? 'Activo' : 'Inactivo'}</td>
+                    <td><button type="button" class="borrarcode" style="border:none;background-color:transparent;cursor:pointer;" data-serialcode="${r[n].couponCode}">Borrar</button></td>
+                </tr>
+                `;
+            }
+            $('#adiooos').html(contenido);
+            $('.borrarcode').click(function(e){
+                e.preventDefault();
+                let theserial = $(this).data('serialcode');
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'http://tandas.smoothoperators.com.mx/damdaservice/api/coupons/remove/' + theserial,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    crossDomain: true,
+                    success: function(r){
+                        // AAAH
+                        location.reload();
+                    },
+                    error: function(r){
+                        // Ah
+                        location.reload();
+                    }
+                });
+            });
+        },
+        error: function(r){
+            console.log(r);
+        }
+    });
 }

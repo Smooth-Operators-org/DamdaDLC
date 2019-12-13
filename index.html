@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Cupones - Damda</title>
     <link rel="stylesheet" href="node_modules/@fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="node_modules/@fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="node_modules/@fullcalendar/timegrid/main.min.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="node_modules/chosen-js/chosen.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-responsive-dt/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="node_modules/jquery-ui/themes/base/all.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="display: none;">
@@ -27,16 +31,16 @@
         </div>
         <div class="option__list">
             <ul>
-                <li>
-                    <a href="index.html" class="is-active">
+                <!-- <li>
+                    <a href="index.html">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <path d="M506.555,208.064L263.859,30.367c-4.68-3.426-11.038-3.426-15.716,0L5.445,208.064 c-5.928,4.341-7.216,12.665-2.875,18.593s12.666,7.214,18.593,2.875L256,57.588l234.837,171.943c2.368,1.735,5.12,2.57,7.848,2.57 c4.096,0,8.138-1.885,10.744-5.445C513.771,220.729,512.483,212.405,506.555,208.064z"/>
                             <path d="M442.246,232.543c-7.346,0-13.303,5.956-13.303,13.303v211.749H322.521V342.009c0-36.68-29.842-66.52-66.52-66.52 s-66.52,29.842-66.52,66.52v115.587H83.058V245.847c0-7.347-5.957-13.303-13.303-13.303s-13.303,5.956-13.303,13.303v225.053 c0,7.347,5.957,13.303,13.303,13.303h133.029c6.996,0,12.721-5.405,13.251-12.267c0.032-0.311,0.052-0.651,0.052-1.036v-128.89 c0-22.009,17.905-39.914,39.914-39.914s39.914,17.906,39.914,39.914v128.89c0,0.383,0.02,0.717,0.052,1.024 c0.524,6.867,6.251,12.279,13.251,12.279h133.029c7.347,0,13.303-5.956,13.303-13.303V245.847 C455.549,238.499,449.593,232.543,442.246,232.543z"/>
                         </svg>
                     </a>
-                </li>
+                </li> -->
                 <li>
-                    <a href="cupones.html">
+                    <a href="index.html" class="is-active">
                         <img src="icons/coupon.png" alt="coupon">
                     </a>
                 </li>
@@ -79,8 +83,8 @@
             <button type="button" id="closeFixedMenu"><i class="fas fa-times"></i>Cerrar</button>
         </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cupones.html">Cupones</a></li>
+            <!-- <li><a href="index.html">Home</a></li> -->
+            <li><a href="index.html">Cupones</a></li>
             <li><a href="#" class="cerrarSession">Cerrar Sesión</a></li>
         </ul>
     </div>
@@ -110,112 +114,42 @@
         <section class="section__main">
             <div class="column title-between">
                 <div class="section__title">
-                    <h2>Tandas</h2>
+                    <h2>Cupones</h2>
                 </div>
                 <div class="btn-for__tandas">
-                    <button id="open-modal-1"><i class="fas fa-plus"></i>Añadir tanda</button>
+                    <button id="open-insertcoupon"><i class="fas fa-plus"></i>Añadir cupón</button>
                 </div>
             </div>
-            <div class="column">
-                <div class="card-group__container">
-                    <div class="card-tanda" data-micromodal-trigger="modal-card">
-                        <span class="status__container"></span>
-                        <div class="card-tanda__header">
-                            <h3>Nombre de la tanda</h3>
-                        </div>
-                        <div class="card-tanda__body">
-                            <p class="card-tanda__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, praesentium eveniet. Vero dolores inventore adipisci officiis hic ab, eum reiciendis esse, voluptas dicta in? Labore quis optio pariatur sed qui?</p>
-                            <span class="card-tanda__monto">$1000.00</span>
-                        </div>
-                    </div>
-                    <div class="card-tanda" data-micromodal-trigger="modal-card">
-                        <span class="status__container"></span>
-                        <div class="card-tanda__header">
-                            <h3>Lorem ipsum dolor sit amet</h3>
-                        </div>
-                        <div class="card-tanda__body">
-                            <p class="card-tanda__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, praesentium eveniet. Vero dolores inventore adipisci officiis hic ab, eum reiciendis esse, voluptas dicta in? Labore quis optio pariatur sed qui?</p>
-                            <span class="card-tanda__monto">$1000.00</span>
-                        </div>
-                    </div>
-                    <div class="card-tanda" data-micromodal-trigger="modal-card">
-                        <span class="status__container"></span>
-                        <div class="card-tanda__header">
-                            <h3>La tercer tanda</h3>
-                        </div>
-                        <div class="card-tanda__body">
-                            <p class="card-tanda__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, praesentium eveniet. Vero dolores inventore adipisci officiis hic ab, eum reiciendis esse, voluptas dicta in? Labore quis optio pariatur sed qui?</p>
-                            <span class="card-tanda__monto">$1000.00</span>
-                        </div>
-                    </div>
-                    <div class="card-tanda" data-micromodal-trigger="modal-card">
-                        <span class="status__container"></span>
-                        <div class="card-tanda__header">
-                            <h3>Tanda milenaria</h3>
-                        </div>
-                        <div class="card-tanda__body">
-                            <p class="card-tanda__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, praesentium eveniet. Vero dolores inventore adipisci officiis hic ab, eum reiciendis esse, voluptas dicta in? Labore quis optio pariatur sed qui?</p>
-                            <span class="card-tanda__monto">$1000.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- CONTENIDO -->
+            <table id="holaaa">
+                <thead>
+                    <tr>
+                        <td>Cupón</td>
+                        <td>Fecha inicio</td>
+                        <td>Fecha fin</td>
+                        <td>Tipo y Cantidad</td>
+                        <td>Planes</td>
+                        <td>Plataformas</td>
+                        <td>Status</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody id="adiooos">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
     </main>
-<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-            <header class="modal__header">
-                <h2 class="modal__title" id="modal-1-title">
-                Añadir Tanda
-                </h2>
-                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-            </header>
-            <main class="modal__content" id="modal-1-content">
-                <form>
-                    <div class="modal__content-input">
-                        <label for="">Nombre:</label>
-                        <div>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="modal__content-input">
-                        <label for=""># de Personas:</label>
-                        <div>
-                            <input type="number" min="1" max="10">
-                        </div>
-                    </div>
-                </form>
-            </main>
-            <footer class="modal__footer">
-                <button class="modal__btn modal__btn-primary">Continue</button>
-                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-            </footer>
-        </div>
-    </div>
-</div>
-<div class="modal micromodal-slide" id="modal-card" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-card-title">
-        <header class="modal__header">
-          <h2 class="modal__title" id="modal-card-title">
-            Título de la tanda
-          </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-        </header>
-        <main class="modal__content" id="modal-card-content">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit consequuntur fugit doloribus ipsa perferendis quia quos repellendus, dicta expedita quam ad magni, praesentium, laborum iste aliquam libero aspernatur? Modi, odit!
-          </p>
-          <div id="calendar"></div>
-        </main>
-        <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary" id="estoEsUnaPrueba">Continue</button>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-        </footer>
-      </div>
-    </div>
-</div>
 <div class="modal micromodal-slide" id="modal-options" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-options-title">
@@ -239,6 +173,98 @@
         </div>
     </div>
 </div>
+<div class="modal micromodal-slide" id="modal-insertcoupon" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-insertcoupon-title">
+                <header class="modal__header">
+                <h2 class="modal__title" id="modal-insertcoupon-title">
+                    Insertar Cupón
+                </h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                </header>
+                <main class="modal__content" id="modal-insertcoupon-content">
+                    <form id="insertCouponForm">
+                    <div>
+                        <div class="inline">
+                            <span>Porcentaje</span>
+                            <input type="radio" name="tipoCoupon" value="1" checked>
+                        </div>
+                        <div class="inline">
+                            <span>Fijo</span>
+                            <input type="radio" name="tipoCoupon" value="2">
+                        </div>
+                    </div>
+                    <div class="numberNumber">
+                        <div class="numberContainer">
+                            <input type="number" name="valorCoupon" min="1" max="99" step="1" value="10">
+                            <div class="iconoForCoupon end">
+                                <i class="fas fa-percent"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selectContainer">
+                        <div>
+                            <label for="selectForPlan">App</label>
+                        </div>
+                        <select name="selectForApp" id="" class="chosen-select" multiple>
+                            <option value="T">Tanda</option>
+                            <option value="G">Gasto</option>
+                            <option value="C">Cañones</option>
+                        </select>
+                    </div>
+                    <div class="selectContainer">
+                        <div>
+                            <label for="selectForPlan">Plan</label>
+                        </div>
+                        <select name="selectForPlan" id="" class="chosen-select" multiple>
+                            <option value="1">Free</option>
+                            <option value="2">Básico</option>
+                            <option value="3">Premium</option>
+                        </select>
+                    </div>
+                    <div class="selectContainer">
+                        <div>
+                            <label for="startDate">Fecha de inicio</label>
+                        </div>
+                        <input type="text" name="startDate" id="startDate">
+                    </div>
+                    <div class="selectContainer">
+                        <div>
+                            <label for="endDate">Fecha de fin</label>
+                        </div>
+                        <input type="text" name="endDate" id="endDate">
+                    </div>
+                    </form>
+                </main>
+                <footer class="modal__footer">
+                <button class="modal__btn modal__btn-primary" id="btnInsertCoupon" type="button">Insertar</button>
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="modal micromodal-slide" id="modal-responseInsert" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-responseInsert-title">
+                <header class="modal__header">
+                <h2 class="modal__title" id="modal-responseInsert-title"></h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                </header>
+                <main class="modal__content" id="modal-responseInsert-content">
+                <div id="codeResponse">
+                    <input type="text" readonly>
+                    <button onclick="copyTheCode()">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                <span class="copy-done" id="copyDone"></span>
+                </main>
+                <footer class="modal__footer">
+                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+                </footer>
+            </div>
+        </div>
+    </div>
     <script src="node_modules/micromodal/dist/micromodal.min.js"></script>
     <script src="node_modules/@fullcalendar/core/main.min.js"></script>
     <script src="node_modules/@fullcalendar/daygrid/main.min.js"></script>
@@ -247,6 +273,11 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/chosen-js/chosen.jquery.js"></script>
     <script src="node_modules/js-cookie/src/js.cookie.js"></script>
-    <script src="js/main.js"></script>
+    <script src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="node_modules/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+    <script src="js/cupones.js"></script>
 </body>
 </html>
