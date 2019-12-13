@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="node_modules/@fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="node_modules/@fullcalendar/timegrid/main.min.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="node_modules/chosen-js/chosen.min.css">
     <link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="node_modules/datatables.net-responsive-dt/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="node_modules/jquery-ui/themes/base/all.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/chosen-js/chosen.min.css">
 </head>
 <body style="display: none;">
     <aside class="tanda-aside">
@@ -117,7 +117,7 @@
                     <h2>Cupones</h2>
                 </div>
                 <div class="btn-for__tandas">
-                    <button id="open-insertcoupon"><i class="fas fa-plus"></i>Añadir cupón</button>
+                    <button id="open-insertcoupon" data-micromodal-trigger="modal-insertcoupon"><i class="fas fa-plus"></i>Añadir cupón</button>
                 </div>
             </div>
             <!-- CONTENIDO -->
@@ -265,19 +265,19 @@
             </div>
         </div>
     </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/micromodal/dist/micromodal.min.js"></script>
-    <script src="node_modules/@fullcalendar/core/main.min.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/js-cookie/src/js.cookie.js"></script>
+    <!-- <script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="node_modules/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script> -->
+    <!-- <script src="node_modules/@fullcalendar/core/main.min.js"></script>
     <script src="node_modules/@fullcalendar/daygrid/main.min.js"></script>
     <script src="node_modules/@fullcalendar/interaction/main.min.js"></script>
-    <script src="node_modules/@fullcalendar/timegrid/main.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/@fullcalendar/timegrid/main.min.js"></script> -->
     <script src="node_modules/chosen-js/chosen.jquery.js"></script>
-    <script src="node_modules/js-cookie/src/js.cookie.js"></script>
     <script src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script>
-    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="node_modules/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-    <script src="node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cupones.js"></script>
 </body>

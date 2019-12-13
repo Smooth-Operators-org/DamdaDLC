@@ -2,16 +2,6 @@ sessionCheck();
 MicroModal.init();
 $(document).ready(function(){
     loadAllCoupons();
-    $('#holaaa').DataTable({
-        responsive: true,
-        ordering: false,
-        info: false,
-        searching: false,
-        bPaginate: false,
-        language: {
-            emptyTable: "Dé click en una tanta para ver su información"
-        }
-    });
     $('#openFixedMenu').click(function(){
         $('#fixedMenu').show();
     });
@@ -109,6 +99,16 @@ $(document).ready(function(){
     //         console.log(r);
     //     }
     // });
+    $('#holaaa').DataTable({
+        responsive: true,
+        ordering: false,
+        info: false,
+        searching: false,
+        bPaginate: false,
+        language: {
+            emptyTable: "Dé click en una tanta para ver su información"
+        }
+    });
 });
 function sessionCheck(){
     if(typeof Cookies.get('sessionExists') === 'undefined'){
